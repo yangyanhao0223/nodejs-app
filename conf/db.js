@@ -10,6 +10,8 @@ var mysqldb = {
 }
 
 function extend(target, source, flag) {
+
+    
     for(var key in source) {
         if(source.hasOwnProperty(key))
             flag ?
@@ -19,13 +21,14 @@ function extend(target, source, flag) {
     return target;
 }
 var pool  = mysql.createPool(extend({}, mysqldb));
+pool.getConnection((err) =>{
+    if (err) {
+        console.log('数据库连接失败');
+        console.log(err);
+        return
+    }
+    return console.log('数据库连接成功');
+    
+})
 module.exports = pool;
-// module.exports = {
-//     mysql: {
-//         host: 'localhost', 
-//         user: 'root',
-//         password: '123456',
-//         database:'yang', // 前面建的user表位于些数据库中
-//         port: 3306
-//     }
-// };
+

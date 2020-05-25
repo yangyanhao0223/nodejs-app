@@ -7,7 +7,7 @@ var user={
 	userupdate:'UPDATE `user` SET `name`=?,`desc`=?,`price`=?,`sum`=? WHERE `id`=?',
     //查
     getUserAll: 'select * from user',
-    getUserById: 'select * from user where id=?'
+    getUserById: 'select * from user where name=?'
 }
 
 module.exports=user;
